@@ -50,3 +50,5 @@ dev = [
     "pytest-cov>=7.1.0",
     "ruff>=0.16.7",
 ]
+[tool.mypy]
+strict = true
