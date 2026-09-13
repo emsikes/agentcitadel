@@ -1,6 +1,6 @@
 from datetime import UTC, datetime
 from enum import Enum
-from typing import Literal, Any
+from typing import Any, Literal
 from uuid import uuid4
 
 from pydantic import BaseModel, Field
@@ -53,6 +53,7 @@ class ToolResult(BaseModel):
     Always carries `content` — on failure, a description the agent can
     feed back to the model. Callers branch on `ok`, not on `error`.
     """
+
     call_id: str
     ok: bool
     content: str
