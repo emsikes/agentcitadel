@@ -24,7 +24,7 @@ def evaluate(policy: Policy, tool: str) -> tuple[Action, str]:
     """
     for rule in policy.rules:
         if matches(rule.tool, tool):
-            return rule.action, rule.reason or f"matched fule {rule.tool}"
+            return rule.action, rule.reason or f"matched rule {rule.tool}"
     return policy.default, f"no rule matched {tool}: policy default"
 
 

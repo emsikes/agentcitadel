@@ -1,5 +1,7 @@
 """Policy matching, evaluation order, and lint warnings."""
 
+from pathlib import Path
+
 import pytest
 from pydantic import ValidationError
 
@@ -75,3 +77,11 @@ def test_lint_is_quiet_on_correct_ordering() -> None:
 
 def test_lint_flags_permissive_wildcard() -> None:
     assert lint(Policy(rules=[Rule(tool="*", action=Action.ALLOW)]))
+
+
+def test_loads_from_yaml(tmp_path: Path) -> None:
+    path = tmp_path / "policy.yaml"
+    path.write_text("default: deny\nrules:\n  - tool: fs.read\n    action: allow\n")
+
+    policy = Policy.from_yaml(path)
+    assert evaluate(policy, "fs.read")[0] is Action.ALLOW

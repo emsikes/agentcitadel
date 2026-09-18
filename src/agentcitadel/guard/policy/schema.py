@@ -3,7 +3,9 @@ Declarative tool authorization policy.
 """
 
 from enum import Enum
+from pathlib import Path
 
+import yaml
 from pydantic import BaseModel, Field, model_validator
 
 
@@ -48,3 +50,8 @@ class Policy(BaseModel):
                 )
             seen.add(rule.tool)
         return self
+
+    @classmethod
+    def from_yaml(cls, path: Path) -> "Policy":
+        """Load a policy file"""
+        return cls.model_validate(yaml.safe_load(path.read_text()))

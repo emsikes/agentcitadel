@@ -1,0 +1,13 @@
+default: deny
+
+rules:
+  - tool: fs.read
+    action: allow
+
+  - tool: fs.*
+    action: ask
+    reason: filesystem write outside the read allowlist
+
+  - tool: shell.*
+    action: deny
+    reason: shell execution is not permitted
