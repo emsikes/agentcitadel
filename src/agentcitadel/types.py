@@ -72,3 +72,17 @@ class Message(BaseModel):
     content: str
     tool_calls: list[ToolCall] = Field(default_factory=list)
     tool_call_id: str | None = None
+
+
+class Span(BaseModel):
+    """
+    One recorded step in a run: LLM call, tool call, or guard decision.
+    """
+
+    run_id: str
+    kind: Literal["llm", "tool", "guard", "policy"]
+    name: str
+    input: dict[str, Any]
+    output: dict[str, Any]
+    started_at: datetime = Field(default_factory=lambda: datetime.now(UTC))
+    duration_ms: float | None = None
