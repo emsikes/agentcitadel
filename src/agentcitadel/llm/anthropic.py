@@ -1,11 +1,11 @@
 """Anthropic provider adapter."""
 
-import os
 from collections.abc import Sequence
 from typing import Any
 
 import httpx
 
+from agentcitadel.config import Settings
 from agentcitadel.types import Message, ToolCall
 
 API_URL = "https://api.anthropic.com/v1/messages"
@@ -21,7 +21,7 @@ class AnthropicProvider:
         max_tokens: int = 4096,
     ) -> None:
         self.model = model
-        self.api_key = api_key or os.environ["ANTHROPIC_API_KEY"]
+        self.api_key = api_key or Settings().anthropic_api_key
         self.max_tokens = max_tokens
 
     async def complete(
