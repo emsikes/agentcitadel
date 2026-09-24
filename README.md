@@ -11,6 +11,7 @@
 ![OpenTelemetry](https://img.shields.io/badge/OpenTelemetry-export-425CC7?logo=opentelemetry&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-storage-003B57?logo=sqlite&logoColor=white)
 ![Anthropic](https://img.shields.io/badge/Anthropic-provider-D97757?logo=anthropic&logoColor=white)
+[![CI](https://github.com/emsikes/agentcitadel/actions/workflows/ci.yml/badge.svg)](https://github.com/emsikes/agentcitadel/actions/workflows/ci.yml)
 
 An agent framework where guardrails, authorization, and audit trails are primitives rather than
 add-ons. Every agent run is guarded on the way in, authorized at every tool call, guarded on the
@@ -253,11 +254,14 @@ Pre-release and under active development. The API is not yet stable.
 | Tool registry and execution | Complete |
 | Anthropic provider adapter | Complete |
 | Agent loop | Complete |
-| CLI (`citadel run`, `citadel trace`) | In progress |
+| Configuration via environment or `.env` | Complete |
+| CLI (`citadel run`, `citadel trace`) | Complete |
+| Tool loading for the CLI | In progress |
 | Memory: episodic, semantic, audit trail | Planned |
+| SQLite and PostgreSQL storage backends | Planned |
 | Replay, cost metrics, HTML trace viewer | Planned |
 | OpenTelemetry export | Planned |
-| Local transformer detector | Planned |
+| Vektor-Guard detector | Planned |
 
 ---
 
